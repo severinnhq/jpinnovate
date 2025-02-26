@@ -4,6 +4,11 @@ import { motion} from "framer-motion";
 import { Circle } from "lucide-react";
 import { cn } from "@/lib/utils";
 
+// Animation presets
+const INSTANT_ANIMATION = {
+  animationDelay: "0s !important",
+  transitionDelay: "0s !important",
+};
 
 function ElegantShape({
     className,
@@ -32,11 +37,12 @@ function ElegantShape({
             }}
             transition={{
                 duration: 2.4,
-                delay: 0, // No delay
+                delay: 0,
                 ease: [0.23, 0.86, 0.39, 0.96],
-                opacity: { duration: 1.2 },
+                opacity: { duration: 1.2, delay: 0 },
             }}
             className={cn("absolute", className)}
+            style={INSTANT_ANIMATION}
         >
             <motion.div
                 animate={{
@@ -46,10 +52,12 @@ function ElegantShape({
                     duration: 12,
                     repeat: Number.POSITIVE_INFINITY,
                     ease: "easeInOut",
+                    delay: 0,
                 }}
                 style={{
                     width,
                     height,
+                    ...INSTANT_ANIMATION
                 }}
                 className="relative"
             >
@@ -78,19 +86,6 @@ function HeroGeometric({
     title1?: string;
     title2?: string;
 }) {
-    const fadeUpVariants = {
-        hidden: { opacity: 0, y: 30 },
-        visible: {
-            opacity: 1,
-            y: 0,
-            transition: {
-                duration: 1,
-                delay: 0, // No initial delay
-                ease: [0.25, 0.4, 0.25, 1],
-            },
-        },
-    };
-
     return (
         <div className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-[#030303]">
             <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/[0.05] via-transparent to-rose-500/[0.05] blur-3xl" />
@@ -140,9 +135,10 @@ function HeroGeometric({
             <div className="relative z-10 container mx-auto px-4 md:px-6">
                 <div className="max-w-3xl mx-auto text-center">
                     <motion.div
-                        variants={fadeUpVariants}
-                        initial="hidden"
-                        animate="visible"
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 1, delay: 0 }}
+                        style={INSTANT_ANIMATION}
                         className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.03] border border-white/[0.08] mb-8 md:mb-12"
                     >
                         <Circle className="h-2 w-2 fill-rose-500/80" />
@@ -152,9 +148,10 @@ function HeroGeometric({
                     </motion.div>
 
                     <motion.div
-                        variants={fadeUpVariants}
-                        initial="hidden"
-                        animate="visible"
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 1, delay: 0 }}
+                        style={INSTANT_ANIMATION}
                     >
                         <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold mb-6 md:mb-8 tracking-tight">
                             <span className="bg-clip-text text-transparent bg-gradient-to-b from-white to-white/80">
@@ -172,9 +169,10 @@ function HeroGeometric({
                     </motion.div>
 
                     <motion.div
-                        variants={fadeUpVariants}
-                        initial="hidden"
-                        animate="visible"
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 1, delay: 0 }}
+                        style={INSTANT_ANIMATION}
                     >
                         <p className="text-base sm:text-lg md:text-xl text-white/40 mb-8 leading-relaxed font-light tracking-wide max-w-xl mx-auto px-4">
                             Crafting exceptional digital experiences through
