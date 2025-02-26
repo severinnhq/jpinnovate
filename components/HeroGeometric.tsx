@@ -23,9 +23,9 @@ function ElegantShape({
     return (
         <motion.div
             initial={{
-                opacity: 0,
-                y: -100, // Reduced distance to travel
-                rotate: rotate - 10, // Reduced rotation difference
+                opacity: 0.5,
+                y: -20, // Minimal distance
+                rotate: rotate - 2, // Minimal rotation
             }}
             animate={{
                 opacity: 1,
@@ -33,10 +33,10 @@ function ElegantShape({
                 rotate: rotate,
             }}
             transition={{
-                duration: 1.2, // Reduced from 2.4
-                delay: delay * 0.5, // Cut delay in half
+                duration: 0.3, // Very quick animation
+                delay: delay * 0.1, // Minimal delay
                 ease: [0.23, 0.86, 0.39, 0.96],
-                opacity: { duration: 0.6 }, // Reduced from 1.2
+                opacity: { duration: 0.2 }, // Very quick fade
             }}
             className={cn("absolute", className)}
         >
@@ -81,13 +81,13 @@ function HeroGeometric({
     title2?: string;
 }) {
     const fadeUpVariants = {
-        hidden: { opacity: 0, y: 20 }, // Reduced from 30
+        hidden: { opacity: 0.8, y: 5 }, // Minimal movement
         visible: (i: number) => ({
             opacity: 1,
             y: 0,
             transition: {
-                duration: 0.8, // Reduced from 1
-                delay: 0.2 + i * 0.15, // Reduced from 0.5 + i * 0.2
+                duration: 0.2, // Very quick
+                delay: 0.05 + i * 0.05, // Minimal staggered delay
                 ease: [0.25, 0.4, 0.25, 1],
             },
         }),
@@ -99,7 +99,7 @@ function HeroGeometric({
 
             <div className="absolute inset-0 overflow-hidden">
                 <ElegantShape
-                    delay={0.15} // Reduced from 0.3
+                    delay={0.05}
                     width={600}
                     height={140}
                     rotate={12}
@@ -108,7 +108,7 @@ function HeroGeometric({
                 />
 
                 <ElegantShape
-                    delay={0.25} // Reduced from 0.5
+                    delay={0.1}
                     width={500}
                     height={120}
                     rotate={-15}
@@ -117,7 +117,7 @@ function HeroGeometric({
                 />
 
                 <ElegantShape
-                    delay={0.2} // Reduced from 0.4
+                    delay={0.07}
                     width={300}
                     height={80}
                     rotate={-8}
@@ -126,7 +126,7 @@ function HeroGeometric({
                 />
 
                 <ElegantShape
-                    delay={0.3} // Reduced from 0.6
+                    delay={0.12}
                     width={200}
                     height={60}
                     rotate={20}
@@ -135,7 +135,7 @@ function HeroGeometric({
                 />
 
                 <ElegantShape
-                    delay={0.35} // Reduced from 0.7
+                    delay={0.15}
                     width={150}
                     height={40}
                     rotate={-25}
