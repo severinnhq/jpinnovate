@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { Circle } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-// These settings ensure there’s no delay on CSS animations.
+// Animation presets
 const INSTANT_ANIMATION = {
   animationDelay: "0s !important",
   transitionDelay: "0s !important",
@@ -25,21 +25,22 @@ function ElegantShape({
 }) {
   return (
     <motion.div
-      // Instead of starting with opacity: 0 and off-screen, we start visible.
       initial={{
-        opacity: 1,
-        y: 0,
-        rotate: rotate,
+        opacity: 0,
+        y: -150,
+        rotate: rotate - 15,
       }}
       animate={{
         opacity: 1,
         y: 0,
         rotate: rotate,
       }}
-      // A short duration if you want to keep a very subtle motion.
       transition={{
-        duration: 0.3,
+        duration: 2.4,
+        delay: 0,
         ease: [0.23, 0.86, 0.39, 0.96],
+        // Make the fade-in almost instantaneous while keeping the other transitions as is.
+        opacity: { duration: 0.1, delay: 0 },
       }}
       className={cn("absolute", className)}
       style={INSTANT_ANIMATION}
@@ -135,10 +136,12 @@ function HeroGeometric({
       <div className="relative z-10 container mx-auto px-4 md:px-6">
         <div className="max-w-3xl mx-auto text-center">
           <motion.div
-            // Set the text to be visible immediately and apply only a quick subtle slide.
-            initial={{ y: 30, opacity: 1 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.3, delay: 0 }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              y: { duration: 1, ease: "easeOut" },
+              opacity: { duration: 0.1, ease: "easeOut" },
+            }}
             style={INSTANT_ANIMATION}
             className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.03] border border-white/[0.08] mb-8 md:mb-12"
           >
@@ -149,9 +152,12 @@ function HeroGeometric({
           </motion.div>
 
           <motion.div
-            initial={{ y: 30, opacity: 1 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.3, delay: 0 }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              y: { duration: 1, ease: "easeOut" },
+              opacity: { duration: 0.1, ease: "easeOut" },
+            }}
             style={INSTANT_ANIMATION}
           >
             <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold mb-6 md:mb-8 tracking-tight">
@@ -170,9 +176,12 @@ function HeroGeometric({
           </motion.div>
 
           <motion.div
-            initial={{ y: 30, opacity: 1 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.3, delay: 0 }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              y: { duration: 1, ease: "easeOut" },
+              opacity: { duration: 0.1, ease: "easeOut" },
+            }}
             style={INSTANT_ANIMATION}
           >
             <p className="text-base sm:text-lg md:text-xl text-white/40 mb-8 leading-relaxed font-light tracking-wide max-w-xl mx-auto px-4">
