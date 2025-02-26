@@ -11,14 +11,12 @@ function ElegantShape({
     height = 100,
     rotate = 0,
     gradient = "from-white/[0.08]",
-    index = 0,
 }: {
     className?: string;
     width?: number;
     height?: number;
     rotate?: number;
     gradient?: string;
-    index?: number;
 }) {
     return (
         <motion.div
@@ -82,7 +80,7 @@ function HeroGeometric({
 }) {
     const fadeUpVariants = {
         hidden: { opacity: 0, y: 30 },
-        visible: (i: number) => ({
+        visible: {
             opacity: 1,
             y: 0,
             transition: {
@@ -90,7 +88,7 @@ function HeroGeometric({
                 delay: 0, // No initial delay
                 ease: [0.25, 0.4, 0.25, 1],
             },
-        }),
+        },
     };
 
     return (
@@ -104,7 +102,6 @@ function HeroGeometric({
                     rotate={12}
                     gradient="from-indigo-500/[0.15]"
                     className="left-[-10%] md:left-[-5%] top-[15%] md:top-[20%]"
-                    index={0}
                 />
 
                 <ElegantShape
@@ -113,7 +110,6 @@ function HeroGeometric({
                     rotate={-15}
                     gradient="from-rose-500/[0.15]"
                     className="right-[-5%] md:right-[0%] top-[70%] md:top-[75%]"
-                    index={1}
                 />
 
                 <ElegantShape
@@ -122,7 +118,6 @@ function HeroGeometric({
                     rotate={-8}
                     gradient="from-violet-500/[0.15]"
                     className="left-[5%] md:left-[10%] bottom-[5%] md:bottom-[10%]"
-                    index={2}
                 />
 
                 <ElegantShape
@@ -131,7 +126,6 @@ function HeroGeometric({
                     rotate={20}
                     gradient="from-amber-500/[0.15]"
                     className="right-[15%] md:right-[20%] top-[10%] md:top-[15%]"
-                    index={3}
                 />
 
                 <ElegantShape
@@ -140,14 +134,12 @@ function HeroGeometric({
                     rotate={-25}
                     gradient="from-cyan-500/[0.15]"
                     className="left-[20%] md:left-[25%] top-[5%] md:top-[10%]"
-                    index={4}
                 />
             </div>
 
             <div className="relative z-10 container mx-auto px-4 md:px-6">
                 <div className="max-w-3xl mx-auto text-center">
                     <motion.div
-                        custom={0}
                         variants={fadeUpVariants}
                         initial="hidden"
                         animate="visible"
@@ -160,7 +152,6 @@ function HeroGeometric({
                     </motion.div>
 
                     <motion.div
-                        custom={1}
                         variants={fadeUpVariants}
                         initial="hidden"
                         animate="visible"
@@ -181,7 +172,6 @@ function HeroGeometric({
                     </motion.div>
 
                     <motion.div
-                        custom={2}
                         variants={fadeUpVariants}
                         initial="hidden"
                         animate="visible"
